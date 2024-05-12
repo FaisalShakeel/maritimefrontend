@@ -106,7 +106,7 @@ function Profile()
                 {Id==localStorage.getItem("UID")?<button className="bg-gray-100 w-[140px] rounded-full font-caslonantique mt-[10px] mb-[5px] font-bold m-auto" onClick={()=>{
                     localStorage.removeItem("UID")
 
-                    navigate("/home")
+                    navigate("/")
                     
                 }}>Log Out</button>:<></>}
                 {Id==localStorage.getItem("UID")?<Link to={`/postjob`} className="m-auto"><button className="font-caslonantique rounded-full font-bold text-[14px] w-[160px] m-auto bg-gray-100">Post Job</button></Link>:<></>}
@@ -219,7 +219,7 @@ function Profile()
          return(<div className="flex flex-col">
          <ToastContainer/>
              <div className='flex flex-row justify-between font-caslonantique m-auto w-full sm:w-[230px] md:w-[230px] lg:w-[230px] xl:w-[230px]'>
-     <img src={user.profilePhotoUrl} className='h-[40px] w-[40px] rounded-full'/>
+     <img src={user.photoUrl} className='h-[40px] w-[40px] rounded-full'/>
  
      <div className='flex flex-col'>
          <h1 className='font-bold text-[11px]'>{user.name}</h1>
@@ -320,7 +320,7 @@ function Profile()
         return(
             <div className='flex flex-col w-full'>
                 <div className="flex flex-row font-caslonantique justify-between w-full m-auto sm:w-full md:w-[400px] lg:w-[450px] xl:w-[500px]">
-                    <img src={user.profilePhotoUrl} className="h-[30px] w-[30px] rounded-full"/>
+                    <img src={user.photoUrl} className="h-[30px] w-[30px] rounded-full"/>
                     <div className="flex flex-col">
                         <h1>{user.name}</h1>
                         <h5>{user.bio}</h5>

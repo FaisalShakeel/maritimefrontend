@@ -52,11 +52,20 @@ function SignUp() {
         <button className="m-auto bg-green-700 rounded-full text-white font-nsimsum text-[13px] font-extrabold w-[100px] mt-[30px]" onClick={()=>{
            async function signUp()
             {
-           let response=await axios.post("http://127.0.0.1:5000/maritime/user/register",{name:userName,EMailAddress,passWord,profilePhotoUrl,role:selectedRole})
+                const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+               if(emailRegex.test(EMailAddress)==false)
+                {
+                    toast.error("Enter A Valid EMail Address")
+
+                }
+                else
+                {
+                    let response=await axios.post("http://127.0.0.1:5000/maritime/user/register",{name:userName,EMailAddress,passWord,profilePhotoUrl,role:selectedRole})
             if(response.data.success)
             {
                 localStorage.setItem("UID",response.data.userId)
                 localStorage.setItem("token",response.data._jwt)
+                localStorage.setItem("profilePhotoUrl",profilePhotoUrl)
 
                 localStorage.setItem("role",selectedRole)
                 toast.success("Account Successfully Created!",{position:"top-center",style:{fontFamily:"Print Clearly",fontWeight:"bold"}})
@@ -70,6 +79,9 @@ function SignUp() {
             {
                 toast.error("There Was An Error While Creating Account",{position:"top-center",style:{fontFamily:"Print Clearly",fontWeight:"bold"}})
             }
+
+                }
+           
             }
             signUp()
         }}>Register</button>
