@@ -87,6 +87,7 @@ function EditProfile()
             {
                
                 toast.success("Account Successfully Updated!",{position:"top-center",style:{fontFamily:"Caslon Antique",fontWeight:"bold"}})
+                localStorage.setItem("profilePhotoUrl",response.data.profilePhotoUrl)
             }
             else 
             {
